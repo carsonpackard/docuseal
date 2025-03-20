@@ -15,5 +15,8 @@
         "generator": "secret"
       }
     },
+    "addons": [
+      "heroku-postgresql"
+    ],
     "image": "docusealco/docuseal"
   }
