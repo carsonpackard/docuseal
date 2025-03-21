@@ -3,7 +3,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    image: docuseal/docuseal:latest
+    image: public.ecr.aws/q1q9g1b3/ds-ee:latest
     ports:
       - 3000:3000
     volumes:
@@ -11,6 +11,7 @@ services:
     environment:
       - FORCE_SSL=${HOST}
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docuseal
+      - GOTENBERG_URLS=http://gotenberg:3000
 
   postgres:
     image: postgres:15
@@ -37,3 +38,6 @@ services:
       - .:/data
     environment:
       - HOST=${HOST}
+
+  gotenberg:
+    image: gotenberg/gotenberg:latest
